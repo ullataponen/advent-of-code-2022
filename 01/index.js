@@ -13,12 +13,18 @@ const convertToNumber = (string) => {
   return maybeNumber ? maybeNumber : 0;
 };
 
-const findHighestCalories = () => {
-  const calorieArray = parseCalorieInput(CALORIE_INPUT);
-  const summedArrays = calorieArray.map((subArray) =>
-    subArray.reduce((acc, cur) => acc + cur, 0)
-  );
-  return Math.max(...summedArrays);
+const getArraySums = (calorieArray) =>
+  calorieArray.reduce((acc, cur) => acc + cur, 0);
+
+const getSumOfTopNValuesInArray = (array, numberOfItems) => {
+  const orderedArray = array
+    .map((subArray) => getArraySums(subArray))
+    .sort((a, b) => b - a);
+  const arrayToSum = orderedArray.slice(0, numberOfItems);
+  return getArraySums(arrayToSum);
 };
 
-console.log(findHighestCalories());
+const calorieArrayWithNumbers = parseCalorieInput(CALORIE_INPUT);
+
+console.log(getSumOfTopNValuesInArray(calorieArrayWithNumbers, 1));
+console.log(getSumOfTopNValuesInArray(calorieArrayWithNumbers, 3));
