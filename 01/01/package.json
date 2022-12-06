@@ -1,0 +1,15 @@
+{
+  "name": "calorie-counter",
+  "version": "1.0.0",
+  "description": "Calorie counter for elves searching for star fruit",
+  "main": "index.ts",
+  "type": "module",
+  "repository": "https://github.com/ullataponen/advent-of-code-2022.git",
+  "author": "Ulla Taponen",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {}
+}
