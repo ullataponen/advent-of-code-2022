@@ -20,12 +20,9 @@ export const Player2Shapes =
   SHAPES_BY_PLAYERS.X || SHAPES_BY_PLAYERS.Y || SHAPES_BY_PLAYERS.Z;
 
 export const scoreByShape = {
-  [SHAPES_BY_PLAYERS.A]: 1,
-  [SHAPES_BY_PLAYERS.X]: 1,
-  [SHAPES_BY_PLAYERS.B]: 2,
-  [SHAPES_BY_PLAYERS.Y]: 2,
-  [SHAPES_BY_PLAYERS.C]: 3,
-  [SHAPES_BY_PLAYERS.Z]: 3,
+  ROCK: 1,
+  PAPER: 2,
+  SCISSORS: 3,
 };
 
 export const scoreByOutcome = {

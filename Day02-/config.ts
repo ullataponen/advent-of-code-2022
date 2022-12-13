@@ -16,5 +16,5 @@ export const getInputFromClient = async () => {
 export const submitAnswerToClient = async (result: any) => {
   console.log(result);
 
-  return await client.submit(1, result);
+  return await client.submit(2, result);
 };

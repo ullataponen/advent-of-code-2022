@@ -30,27 +30,53 @@ export const calculateRockPaperScissorsWinner = async (): Promise<number> => {
 
 const calculateOutcomeForPlayer2 = (round: Round) => {
   let score = 0;
-  if (
-    (round.player1Input === SHAPES_BY_PLAYERS.A &&
-      round.player2Input === SHAPES_BY_PLAYERS.Y) ||
-    (round.player1Input === SHAPES_BY_PLAYERS.B &&
-      round.player2Input === SHAPES_BY_PLAYERS.Z) ||
-    (round.player1Input === SHAPES_BY_PLAYERS.C &&
-      round.player2Input === SHAPES_BY_PLAYERS.X)
-  ) {
+  if (round.player2Input === SHAPES_BY_PLAYERS.Z) {
     score = scoreByOutcome.Win;
-  } else if (
-    (round.player1Input === SHAPES_BY_PLAYERS.A &&
-      round.player2Input === SHAPES_BY_PLAYERS.X) ||
-    (round.player1Input === SHAPES_BY_PLAYERS.B &&
-      round.player2Input === SHAPES_BY_PLAYERS.Y) ||
-    (round.player1Input === SHAPES_BY_PLAYERS.C &&
-      round.player2Input === SHAPES_BY_PLAYERS.Z)
-  ) {
+  }
+  if (round.player2Input === SHAPES_BY_PLAYERS.Y) {
     score = scoreByOutcome.Draw;
-  } else {
+  }
+  if (round.player2Input === SHAPES_BY_PLAYERS.X) {
     score = scoreByOutcome.Loss;
   }
 
-  return scoreByShape[round.player2Input] + score;
+  return calculateScoreByShape(round) + score;
+};
+
+const calculateScoreByShape = (round: Round): number => {
+  let score = 0;
+  if (round.player2Input === SHAPES_BY_PLAYERS.X) {
+    if (round.player1Input === SHAPES_BY_PLAYERS.A) {
+      score = scoreByShape.SCISSORS;
+    }
+    if (round.player1Input === SHAPES_BY_PLAYERS.B) {
+      score = scoreByShape.ROCK;
+    }
+    if (round.player1Input === SHAPES_BY_PLAYERS.C) {
+      score = scoreByShape.PAPER;
+    }
+  }
+  if (round.player2Input === SHAPES_BY_PLAYERS.Y) {
+    if (round.player1Input === SHAPES_BY_PLAYERS.A) {
+      score = scoreByShape.ROCK;
+    }
+    if (round.player1Input === SHAPES_BY_PLAYERS.B) {
+      score = scoreByShape.PAPER;
+    }
+    if (round.player1Input === SHAPES_BY_PLAYERS.C) {
+      score = scoreByShape.SCISSORS;
+    }
+  }
+  if (round.player2Input === SHAPES_BY_PLAYERS.Z) {
+    if (round.player1Input === SHAPES_BY_PLAYERS.A) {
+      score = scoreByShape.PAPER;
+    }
+    if (round.player1Input === SHAPES_BY_PLAYERS.B) {
+      score = scoreByShape.SCISSORS;
+    }
+    if (round.player1Input === SHAPES_BY_PLAYERS.C) {
+      score = scoreByShape.ROCK;
+    }
+  }
+  return score;
 };
