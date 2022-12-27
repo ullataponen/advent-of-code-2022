@@ -3,18 +3,24 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-const client = new AocClient({
-  year: 2022,
-  day: 2,
-  token: process.env.SESSION_COOKIE,
-});
+export const createClientForYearDay = (year: number, day: number) => {
+  return new AocClient({
+    year: year,
+    day: day,
+    token: process.env.SESSION_COOKIE,
+  });
+};
 
-export const getInputFromClient = async () => {
+export const getInputFromClient = async (client: AocClient): Promise<any> => {
   return await client.getInput();
 };
 
-export const submitAnswerToClient = async (result: any) => {
+export const submitAnswerToClient = async (
+  client: AocClient,
+  part: number,
+  result: any
+) => {
   console.log(result);
 
-  return await client.submit(2, result);
+  return await client.submit(part, result);
 };

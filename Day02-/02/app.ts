@@ -1,4 +1,3 @@
-import { getInputForDay } from "..";
 import {
   Player1Shapes,
   Player2Shapes,
@@ -8,9 +7,7 @@ import {
   SHAPES_BY_PLAYERS,
 } from "./types";
 
-export const parseInputToArrays = async (): Promise<Round[]> => {
-  const input = await getInputForDay();
-
+export const parseInputToArrays = async (input: any): Promise<Round[]> => {
   const output = input.split("\n").map((row) => ({
     player1Input: row[row.indexOf(" ") - 1] as typeof Player1Shapes,
     player2Input: row[row.indexOf(" ") + 1] as typeof Player2Shapes,
@@ -19,8 +16,10 @@ export const parseInputToArrays = async (): Promise<Round[]> => {
   return output;
 };
 
-export const calculateRockPaperScissorsWinner = async (): Promise<number> => {
-  const playedRounds = await parseInputToArrays();
+export const calculateRockPaperScissorsWinner = async (
+  input: any
+): Promise<number> => {
+  const playedRounds = await parseInputToArrays(input);
   const totalScore = playedRounds.reduce(
     (acc, cur) => acc + calculateOutcomeForPlayer2(cur),
     0
