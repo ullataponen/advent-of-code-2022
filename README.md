@@ -9,6 +9,7 @@ For fun!
 ### Languages
 - JavaScript / TypeScript (Node.js)
 
-### Libraries
-- [advent-of-code-client](https://github.com/toblu/advent-of-code-client): to fetch daily inputs
+### Packages
+- [advent-of-code-client](https://github.com/toblu/advent-of-code-client): for fetching daily inputs and sending results
 - [dotenv](https://github.com/motdotla/dotenv): for loading environment variables
+- [yargs](https://github.com/yargs/yargs): for running the scripts with arguments

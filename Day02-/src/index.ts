@@ -1,14 +1,18 @@
 import { calculateRockPaperScissorsWinner } from "./02/app";
+import { parseInputToEqualSizedStrings } from "./03/app";
 import {
   createClientForYearDay,
   getInputFromClient,
   submitAnswerToClient,
 } from "./config";
+import { runOptions } from "./runner";
 
-const run = async () => {
+export const run = async (argv: runOptions) => {
   try {
-    const client = createClientForYearDay(2022, 2);
-    const input = await getInputFromClient(client);
+    console.log(`Fetching data for year ${argv.year}, day ${argv.day}`);
+
+    const client = createClientForYearDay(argv.year, argv.day);
+    const input: string = await getInputFromClient(client);
     const result = await calculateRockPaperScissorsWinner(input);
 
     return await submitAnswerToClient(client, 2, result);
@@ -16,5 +20,3 @@ const run = async () => {
     console.error("Error", err);
   }
 };
-
-run();
